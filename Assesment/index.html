@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Communication</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        .btn {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="input-group">
+            <label for="client-cert">Client Certificate:</label>
+            <input type="text" id="client-cert">
+        </div>
+        <div class="input-group">
+            <label for="peer-cert">Peer Certificate:</label>
+            <input type="text" id="peer-cert">
+        </div>
+        
+        <!-- Send to Peer Section -->
+        <div class="input-group">
+            <label for="peer-action">Peer Action (e.g., send_message):</label>
+            <input type="text" id="peer-action">
+        </div>
+        <div class="input-group">
+            <label for="peer-message">Peer Message:</label>
+            <input type="text" id="peer-message">
+        </div>
+        <button class="btn" onclick="sendToPeer()">Send to Peer</button>
+        <!-- End of Send to Peer Section -->
+
+        <!-- Send to Client Section -->
+        <div class="input-group">
+            <label for="client-action">Client Action (e.g., send_message):</label>
+            <input type="text" id="client-action">
+        </div>
+        <div class="input-group">
+            <label for="client-message">Client Message:</label>
+            <input type="text" id="client-message">
+        </div>
+        <button class="btn" onclick="sendToClient()">Send to Client</button>
+        <!-- End of Send to Client Section -->
+
+    </div>
+
+    <script>
+        function sendToClient() {
+            var clientCert = document.getElementById("client-cert").value;
+            var peerCert = document.getElementById("peer-cert").value;
+            var action = document.getElementById("client-action").value;
+            var message = document.getElementById("client-message").value;
+
+            // Display exchanged certificates
+            alert("Sending to Client:\nClient Certificate: " + clientCert + "\nPeer Certificate: " + peerCert);
+
+            // Perform action based on input
+            if (action === "send_message") {
+                alert("Client : Sending message to peer: " + message);
+            } else {
+                alert("Invalid action.");
+            }
+        }
+
+        function sendToPeer() {
+            var clientCert = document.getElementById("client-cert").value;
+            var peerCert = document.getElementById("peer-cert").value;
+            var action = document.getElementById("peer-action").value;
+            var message = document.getElementById("peer-message").value;
+
+            // Display exchanged certificates
+            alert("Sending to Peer:\nClient Certificate: " + clientCert + "\nPeer Certificate: " + peerCert);
+
+            // Perform action based on input
+            if (action === "send_message") {
+                alert("Peer: Sending message to client: " + message);
+            } else {
+                alert("Invalid action.");
+            }
+        }
+    </script>
+</body>
+</html>
